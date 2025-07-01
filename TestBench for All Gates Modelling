@@ -1,0 +1,24 @@
+//TestBench for All Gates Modelling
+
+module gates_glm_tb();
+
+reg a,b;
+wire y1,y2,y3,y4,y5,y6,y7;
+
+gates_glm DUT (.a(a),.b(b),.y1(y1),.y2(y2),.y3(y4),.y5(y5),.y6(y6),.y7(y7));
+
+initial 
+begin
+ a = 0;b = 0;
+end
+initial 
+begin
+#5 a = 0;b = 1;
+#5 a = 1;b = 0;
+#5 a = 1;b = 1;
+end
+initial 
+begin 
+$monitor ( $time,"input a = %b,b = %b,output y1 = %b,y2 = %b,y3 = %b,y4 = %b,y5 = %b,y6 = %b,y7 = %b",a,b,y1,y2,y3,y4,y5,y6,y7);
+end
+endmodule;
