@@ -1,0 +1,30 @@
+
+// Verilog Code for all the logic gates in data flow modelling
+
+module gates_dlm (a,b,y1,y2,y3,y4,y5,y6,y7);
+
+input a,b;
+output y1,y2,y3,y4,y5,y6,y7;
+
+//NOT Gate
+assign y1 = ~a;
+
+//AND Gate
+assign y2 = a&b; 
+
+//OR Gate
+assign y3 = a|b;
+
+//XOR Gate
+assign y4 = a^b;
+
+//XNOR Gate
+assign y5 = ~(a^b);
+
+//NANDGate
+assign y6 = ~(a&b);
+
+//NOR Gate
+assign y7 = ~(a|b);
+
+endmodule;
