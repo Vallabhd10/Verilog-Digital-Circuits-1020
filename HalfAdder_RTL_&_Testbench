@@ -1,0 +1,63 @@
+// HALF ADDER in GATE LEVEL MODELLING
+
+module halfadder_allmods (a,b,sum,carry);
+
+input a,b;
+output sum,carry;
+
+and g1(sum,a,b);
+xor g2(carry,a,b);
+
+endmodule
+
+// HALF ADDER in DATAFLOW MODELLING
+
+module halfadder_dlm (a,b,sum,carry);
+
+input a,b;
+output sum,carry;
+
+assign sum = a&b;
+assign carry = a^b;
+
+endmodule;
+
+// HALF ADDER in BEHAVIORAL LEVEL MODELLING
+
+module halfadder_blm (a,b,sum,carry);
+
+input a,b;
+output reg sum,carry;
+
+always @ (a,b)
+begin
+assign {sum,carry} = a+b;
+end
+
+endmodule;
+
+//TESTBENCH
+
+module halfadder_allmods_tb();
+
+reg a,b;
+wire sum,carry;
+
+halfadder_allmods DUT (.a(a),.b(b),.sum(sum),.carry(carry));
+
+initial 
+begin
+ a = 0;b = 0;
+end
+initial 
+begin
+#5 a = 0;b = 1;
+#5 a = 1;b = 0;
+#5 a = 1;b = 1;
+end
+
+initial 
+begin 
+$monitor ( $time,"input a = %b,b = %b,output sum= %b,carry= %b,",a,b,sum,carry);
+end
+endmodule;
